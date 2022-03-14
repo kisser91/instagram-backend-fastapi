@@ -28,7 +28,6 @@ class PostBase(BaseModel):
 class PostCreate(PostBase):    
     pass
     
-
 ## response schemas 
 class Post(PostBase):
     id: int
@@ -37,6 +36,10 @@ class Post(PostBase):
     owner: UserOut
     class Config:
         orm_mode = True
+
+class PostOut(BaseModel):
+    Post: Post
+    votes: int
 
 class Token(BaseModel):
     access_token: str
@@ -48,3 +51,4 @@ class TokenData(BaseModel):
 class Vote(BaseModel):
     post_id: int
     dir: conint(le=1)
+
